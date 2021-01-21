@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Demostration of 3D Medical Image Segmentation</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="This is the entry page of the whole site">
+     <meta name="author" content="Matthew">  
+     <meta name="keywords" content="Demostration, 3D Medical Image, Deep Learning, Segmentation">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/tooplate-style.css">
+
+</head>
+<body>
+
+     <!-- PRE LOADER -->
+     <!-- <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section> -->
+
+
+     <!-- MENU -->
+     <!-- <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <a href="index.html" class="navbar-brand">AIM Demo</a>
+               </div>
+
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                         <li><a href="#home" class="smoothScroll">Home</a></li>
+                         <li><a href="#demo" class="smoothScroll">Demostration Part 1</a></li>
+                         <li><a href="#demo2" class="smoothScroll">Demostration Part 2</a></li>
+                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="#footer" class="smoothScroll">Bottom</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="http://www.ee.cityu.edu.hk/~yxyuan/index.htm">AIM Group Page</a></li>
+                    </ul>
+               </div>
+
+          </div>
+     </section>      -->
+
+
+     <!-- demo -->
+     <!-- <section id="home" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-offset-3 col-md-6 col-sm-12">
+                         <div class="home-info">
+                              <h3>CityU Electrical Engineering AIM Group</h3>
+                              <h1>3D Medical Image Segmentation Demostration</h1>
+                              <form action="" method="get" class="online-form">
+                              </form>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section> -->
+
+
+     <!-- Compare Models -->
+     <section id="demo" data-stellar-background-ratio="0.5">
+          <div class="container">
+               
+               <div class = "row">
+               
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h1>Prostate Segmentation with Different Models</h1>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <label for="sourcegroup">Choose a Source Group: </label>
+                              <select  name="sourcegroup" id="sourcegroup">
+                              <option value="1">Prostate Group 1</option>
+                              <option value="2">Prostate Group 2</option>
+                              <option value="3">Prostate Group 3</option>
+                         </select>
+                    </div>   
+                    
+                    <div class="col-md-4 col-sm-4">
+                         <label for="methods">Choose a Method: </label>
+                              <select name="methods" id="methods">
+                              <option value = "1">Block</option>
+                              <option value = "2">Edge</option>
+                         </select>
+                    </div> 
+
+                    <div class="col-md-4 col-sm-4">
+                         <button onclick="submitbutton()">Submit</button>
+                    </div>
+                    
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h3 style="color: white;">.</h3>
+                         </div>
+                    </div>
+
+                    <div class="tab-content">
+                         <div class="tab-pane active" id="tab01" role="tabpanel">
+                              
+                              <div id = 'leftcol' class="col-md-4">
+                                   <div style="position: relative; top: 180px;">
+                                        <img id="slide_photo_original" src="images/combine_label_1/0.png">
+                                        <p id = ptxt1 style="position: relative; left: 140px;">Label</p>
+                                   </div>
+                              </div>
+
+                              <div id="rightcol" class="col-md-8">
+                                   <div class="row">
+                                        <div class="col-md-4">
+                                             <img id="slide_photo" src="images/combine_DMFNet_1/0.png">
+                                             <p id = ptxt2 style="text-align: center;">DMFNet<br> specificity: 0.9963 <br> sensitivity: 0.9045</p>
+                                        </div>
+                              
+                                        <div class="col-md-4" style="position: relative; left: 100px;">
+                                             <img id="slide_photo_2" src="images/combine_VNet_1/0.png">
+                                             <p id = ptxt3 style="text-align: center;">VNet <br>specificity: 0.9942<br>sensitivity: 0.8929</p>
+                                        </div>
+                                   </div>
+                                   <div class="row">
+
+                                        <div class="col-md-4">
+                                             <img id="slide_photo_3" src="images/combine_UNet_3D_1/0.png">
+                                             <p id = ptxt4 style="text-align: center;">UNet3D <br>specificity: 0.9973 <br> sensitivity: 0.8309</p>
+                                        </div>
+
+                                        <div class="col-md-4"  style="position: relative; left: 100px;">
+                                             <img id="slide_photo_4" src="images/combine_Ours_1/0.png">
+                                             <p id = ptxt5 style="text-align: center;">Our Method<br> specificity: 0.9973<br> sensitivity: 0.908</p>
+                                        </div>
+                                   </div>
+
+                              </div>
+                              
+
+                              <p style="position: relative; top: 50px; left:500px; z-index: -1;" >Drag to view different layers</p>
+                              <div id = "dragtxt" style="position: relative; left: 500px; background-color: gray;" hidden>
+                                   <p style="color: rgb(127, 217, 217);"><b>Label</b></p>
+                                   <p style="color: rgb(55, 235, 55);"><b> DMFNet</p>
+                                   <p style="color: rgb(236, 69, 69);"><b>UNet3D</b></p>
+                                   <p style="color: rgb(49, 14, 143);"><b>VNet</b></p>
+                                   <p style="color: rgb(253, 237, 253);"><b>Our Method</b></p>
+                              </div>
+                              <p id = "layer_number" style="position: relative; top:40px; left:500px;" >Layers: 0</p>
+                                   
+                              <div class="scroll" id="scroll" style="position: relative; top: -50px; left: 240px;">
+                                   <div class="bar" id="bar">
+                                   </div>
+                                   <div class="mask" id="mask">
+                                   </div>
+                              </div>
+          
+                              
+                         </div>
+
+                    </div>
+
+               </div>
+          </div>
+<s></s>
+     <br>
+     </section>
+     <hr>
+
+     <!-- CONTACT -->
+     <!-- <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-offset-3 col-md-6 col-sm-12">
+                         <div class="section-title">
+                              <h1>About Us</h1>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="team-thumb">
+                              <img src="images/yuanyixuan.jpg" class="img-responsive" alt="Dr.Yuan">
+                              <div class="team-info team-thumb-up">
+                                   <h2>Dr Yuan Yixuan</h2>
+                                   <small>Associate Professor</small>
+                                   <p>Dr. Yixuan Yuan is an assistant professor in EE Department of City University of Hong Kong since April 2018.</p>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="team-thumb">
+                              <div class="team-info team-thumb-down">
+                                   <h2>Yang Chen</h2>
+                                   <small>Ph.D student</small>
+                                   <p>B.S. Huazhong University of Science and Technology</p>
+                              </div>
+                              <img src="images/yangchen.jpg" class="img-responsive" alt="Phd">
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="team-thumb">
+                              <img src="images/guoxiaoqing.jpg" class="img-responsive" alt="Phd" style="width: 300px;">
+                              <div class="team-info team-thumb-up">
+                                   <h2>Guo Xiaoqing </h2>
+                                   <small>Ph.D student</small>
+                                   <p>B.S. Beihang University.</p>
+                              </div>
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>       
+     <hr> -->
+
+
+     <!-- FOOTER -->
+     <footer id="footer" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="copyright-text col-md-12 col-sm-12">
+                         <div class="col-md-6 col-sm-6">
+                              <p>Copyright &copy; <a href="http://www.ee.cityu.edu.hk/~yxyuan/">Artificial Intelligence in Medicine Group</a> of <a href="https://www.ee.cityu.edu.hk/home/">Electrical Engineering Dept</a> at <a href="http://www.cityu.edu.hk">  City University of Hong Kong</a> </p>
+                         </div>
+                         <!-- <p>website author: Matthew WANG </p>
+                         <p>Find me at: matthewwang.work@gmail.com </p> -->
+                         
+                    </div>
+
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
+     <script>
+          var total_layer_number = 39
+          var scroll = document.getElementById('scroll');
+          var bar = document.getElementById('bar');
+          var mask = document.getElementById('mask');
+          var ptxt = document.getElementById('layer_number');
+          var ptxt4 = document.getElementById('ptxt4');
+          var ptxt5 = document.getElementById('ptxt5');
+          var dragtxt = document.getElementById('dragtxt');
+          var barleft = 0;
+          var photo=document.getElementById("slide_photo");
+          var photo2=document.getElementById("slide_photo_2");
+          var photo3=document.getElementById("slide_photo_3");
+          var photo4=document.getElementById("slide_photo_4");
+          var photo_original=document.getElementById("slide_photo_original");
+          var score =  document.getElementById("ptxt1");
+          var score_1 = document.getElementById("ptxt2");
+          var score_2 = document.getElementById("ptxt3");
+          var score_3 = document.getElementById("ptxt4");
+          var score_4 = document.getElementById("ptxt5");
+
+
+          var path_1 = "images/combine_label_1/";
+          var path_2 = "images/combine_DMFNet_1/";
+          var path_3 = "images/combine_VNet_1/";
+          var path_4 = "images/combine_UNet_3D_1/";
+          var path_5 = "images/combine_Ours_1/";
+
+          function submitbutton(){
+
+          var a = document.getElementById("sourcegroup");
+          var source_group = a.options[a.selectedIndex].value;
+          var b = document.getElementById("methods");
+          var display_method = b.options[b.selectedIndex].value;
+
+          if(display_method === "1"){
+               photo_original.hidden = false
+               photo.hidden = false
+               photo2.hidden = false
+               score.hidden = false
+               score_2.hidden = false
+               score_1.hidden = false
+               document.getElementById("leftcol").classList.remove('col-md-2');
+               document.getElementById("leftcol").classList.add('col-md-4');
+               document.getElementById("rightcol").classList.remove('col-md-10');
+               document.getElementById("rightcol").classList.add('col-md-8');
+               dragtxt.hidden = true;
+          
+               if (source_group === "1"){
+                    path_1 = "images/combine_label_1/";
+                    path_2 = "images/combine_DMFNet_1/";
+                    path_3 = "images/combine_VNet_1/";
+                    path_4 = "images/combine_UNet_3D_1/";
+                    path_5 = "images/combine_Ours_1/";
+               }
+               if (source_group === "2"){
+                     path_1 = "images/combine_label_2/";
+                     path_2 = "images/combine_DMFNet_2/";
+                     path_3 = "images/combine_VNet_2/";
+                     path_4 = "images/combine_UNet_3D_2/";
+                     path_5 = "images/combine_Ours_2/";
+               }
+               if (source_group === "3"){
+                     path_1 = "images/combine_label_3/";
+                     path_2 = "images/combine_DMFNet_3/";
+                     path_3 = "images/combine_VNet_3/";
+                     path_4 = "images/combine_UNet_3D_3/";
+                     path_5 = "images/combine_Ours_3/";
+               }
+          }
+          else if (display_method == 2){
+               
+               photo_original.hidden = true
+               photo.hidden = true
+               photo2.hidden = true
+               score.hidden = true
+               score_2.hidden = true
+               score_1.hidden = true
+               document.getElementById("leftcol").classList.add('col-md-2');
+               document.getElementById("leftcol").classList.remove('col-md-4');
+               document.getElementById("rightcol").classList.add('col-md-10');
+               document.getElementById("rightcol").classList.remove('col-md-8');
+               ptxt4.innerHTML = 'Area 1';
+               ptxt5.innerHTML = "Area 2";
+               dragtxt.hidden = false;
+
+
+               if (source_group == 1){
+                path_4 = "images/edge_s_1/";
+                path_5 = "images/edge_l_1/";
+               }
+               if (source_group == 2){
+                     path_4 = "images/edge_s_2/";
+                     path_5 = "images/edge_l_2/";
+               }
+               if (source_group == 3){
+                     path_4 = "images/edge_s_3/";
+                     path_5 = "images/edge_l_3/";
+               }
+          }
+          }
+
+          
+
+
+          bar.onmousedown = function(event){
+          var event = event || window.event;
+          var leftVal = event.clientX - this.offsetLeft;
+          var that = this;
+
+          // make sure the dragging is inside the 'down' 
+          document.onmousemove = function(event){
+               var event = event || window.event;
+               barleft = event.clientX - leftVal;     
+               if(barleft < 0)
+                    barleft = 0;
+               else if(barleft > scroll.offsetWidth - bar.offsetWidth)
+                    barleft = scroll.offsetWidth - bar.offsetWidth;
+          
+               mask.style.width = barleft +'px' ;
+               that.style.left = barleft + "px";
+
+               photo_original.src = path_1+(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))+".png";     
+               photo.src = path_2+(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))+".png";
+               photo2.src = path_3+(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))+".png";
+               photo3.src = path_4+(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))+".png";
+               photo4.src = path_5+(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))+".png";
+
+               ptxt.innerHTML = "Layer：" + (parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number)+"/"+total_layer_number);
+               
+               
+
+               score_1.innerHTML = "Dice Score: " + score_array_1[(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))]
+               score_2.innerHTML = "Dice Score: " + score_array_2[(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))]
+               score_3.innerHTML = "Dice Score: " + score_array_3[(parseInt(barleft/(scroll.offsetWidth-bar.offsetWidth) * total_layer_number))]
+     
+               //This is used for avoiding misselection. When dragging the mouse too fast, bar will also move
+               window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+          }
+          
+          }
+          document.onmouseup = function(){
+               document.onmousemove = null;
+          }
+          </script>
+
+</body>
+</html>
